@@ -5,7 +5,7 @@ import secrets
 import threading
 import typing
 
-__all__ = ["scru160", "scru160f", "Generator"]
+__all__ = ["scru160", "scru160f"]
 
 
 class Generator:
