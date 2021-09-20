@@ -17,20 +17,7 @@ class Generator:
         Returns:
             32-character base32hexupper string (/^[0-9A-V]{32}$/).
         """
-        bs = self.generate()
-        cs = "0123456789ABCDEFGHIJKLMNOPQRSTUV"
-        buffer = []
-        for i in range(0, len(bs), 5):
-            buffer.append(cs[31 & (bs[i + 0] >> 3)])
-            buffer.append(cs[31 & (bs[i + 0] << 2) | (bs[i + 1] >> 6)])
-            buffer.append(cs[31 & (bs[i + 1] >> 1)])
-            buffer.append(cs[31 & (bs[i + 1] << 4) | (bs[i + 2] >> 4)])
-            buffer.append(cs[31 & (bs[i + 2] << 1) | (bs[i + 3] >> 7)])
-            buffer.append(cs[31 & (bs[i + 3] >> 2)])
-            buffer.append(cs[31 & (bs[i + 3] << 3) | (bs[i + 4] >> 5)])
-            buffer.append(cs[31 & (bs[i + 4] >> 0)])
-
-        return "".join(buffer)
+        return _base32hex160(self.generate())
 
     def scru160f(self) -> str:
         """Generates a new SCRU-160 ID encoded in the hexadecimal format.
@@ -113,3 +100,22 @@ def scru160f() -> str:
         40-character hexadecimal string (/^[0-9a-f]{40}$/).
     """
     return _default_generator.scru160f()
+
+
+def _base32hex160(bs: bytes) -> str:
+    """Encodes 20-byte sequence into base32hex."""
+    cs = "0123456789ABCDEFGHIJKLMNOPQRSTUV"
+    buffer = []
+    for i in [0, 5, 10, 15]:
+        buffer += [
+            cs[31 & (bs[i + 0] >> 3)],
+            cs[31 & (bs[i + 0] << 2) | (bs[i + 1] >> 6)],
+            cs[31 & (bs[i + 1] >> 1)],
+            cs[31 & (bs[i + 1] << 4) | (bs[i + 2] >> 4)],
+            cs[31 & (bs[i + 2] << 1) | (bs[i + 3] >> 7)],
+            cs[31 & (bs[i + 3] >> 2)],
+            cs[31 & (bs[i + 3] << 3) | (bs[i + 4] >> 5)],
+            cs[31 & (bs[i + 4] >> 0)],
+        ]
+
+    return "".join(buffer)

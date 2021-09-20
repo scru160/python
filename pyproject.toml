@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "scru160"
-version = "0.2.0"
+version = "0.2.1"
 description = "SCRU-160: Sortable, Clock and Random number-based Unique identifier"
 license = "Apache-2.0"
 authors = ["LiosK <contact@mail.liosk.net>"]
@@ -8,6 +8,9 @@ readme = "README.md"
 homepage = "https://github.com/scru160/python"
 keywords = ["identifier", "uuid", "guid", "ulid", "ksuid"]
 classifiers = ["Operating System :: OS Independent"]
+
+[tool.poetry.scripts]
+scru160 = "scru160.cli:generate"
 
 [tool.poetry.dependencies]
 python = "^3.7.12"
