@@ -1,11 +1,12 @@
 """SCRU-160: Sortable, Clock and Random number-based Unique identifier"""
 
+__all__ = ["scru160", "scru160f"]
+
+
 import datetime
 import secrets
 import threading
 import typing
-
-__all__ = ["scru160", "scru160f"]
 
 
 class Generator:

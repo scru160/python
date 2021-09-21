@@ -1,7 +1,7 @@
 import secrets
 import unittest
 
-from scru160 import _base32hex160
+from scru160 import scru160, _base32hex160
 
 
 class TestBase32hex160(unittest.TestCase):
@@ -10,3 +10,5 @@ class TestBase32hex160(unittest.TestCase):
         for _ in range(1000):
             n = secrets.randbits(160)
             self.assertEqual(int(_base32hex160(n.to_bytes(20, "big")), 32), n)
+            s = scru160()
+            self.assertEqual(_base32hex160(int(s, 32).to_bytes(20, "big")), s)

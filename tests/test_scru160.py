@@ -33,17 +33,17 @@ class TestScru160(unittest.TestCase):
         """Encodes up-to-date unix timestamp"""
         for i in range(10_000):
             now = int(datetime.datetime.now().timestamp() * 1000)
-            ts = int(generate()[0:10], base=32) >> 2
+            ts = int(generate()[0:10], 32) >> 2
             self.assertLess(abs(now - ts), 16)
 
     def test_timestamp_and_counter(self) -> None:
         """Encodes unique sortable pair of timestamp and counter"""
         e = self._samples[0]
-        prevTs = int(e[0:10], base=32) >> 2
-        prevCnt = 0xFFFF & (int(e[9:13], base=32) >> 1)
+        prevTs = int(e[0:10], 32) >> 2
+        prevCnt = 0xFFFF & (int(e[9:13], 32) >> 1)
         for e in self._samples[1:]:
-            curTs = int(e[0:10], base=32) >> 2
-            curCnt = 0xFFFF & (int(e[9:13], base=32) >> 1)
+            curTs = int(e[0:10], 32) >> 2
+            curCnt = 0xFFFF & (int(e[9:13], 32) >> 1)
             self.assertTrue(prevTs < curTs or (prevTs == curTs and prevCnt < curCnt))
             prevTs = curTs
             prevCnt = curCnt
@@ -53,7 +53,7 @@ class TestScru160(unittest.TestCase):
         # count '1' in each bit
         bins = [0] * 160
         for e in self._samples:
-            for i, b in enumerate(f"{int(e, base=32):160b}"):
+            for i, b in enumerate(f"{int(e, 32):160b}"):
                 if b == "1":
                     bins[i] += 1
 
