@@ -1,4 +1,4 @@
-"""SCRU-160: Sortable, Clock and Random number-based Unique identifier"""
+"""SCRU160: Sortable, Clock and Random number-based Unique identifier"""
 
 __all__ = ["scru160", "scru160f"]
 
@@ -10,10 +10,10 @@ import typing
 
 
 class Generator:
-    """Represents SCRU-160 ID generator."""
+    """Represents SCRU160 ID generator."""
 
     def scru160(self) -> str:
-        """Generates a new SCRU-160 ID encoded in the base32hex format.
+        """Generates a new SCRU160 ID encoded in the base32hex format.
 
         Returns:
             32-character base32hexupper string (/^[0-9A-V]{32}$/).
@@ -21,7 +21,7 @@ class Generator:
         return _base32hex160(self.generate())
 
     def scru160f(self) -> str:
-        """Generates a new SCRU-160 ID encoded in the hexadecimal format.
+        """Generates a new SCRU160 ID encoded in the hexadecimal format.
 
         Returns:
             40-character hexadecimal string (/^[0-9a-f]{40}$/).
@@ -29,7 +29,7 @@ class Generator:
         return self.generate().hex()
 
     def generate(self) -> bytes:
-        """Generates a byte sequence that represents a new SCRU-160 ID.
+        """Generates a byte sequence that represents a new SCRU160 ID.
 
         Returns:
             20-byte sequence.
@@ -86,7 +86,7 @@ _default_generator = Generator()
 
 
 def scru160() -> str:
-    """Generates a new SCRU-160 ID encoded in the base32hex format.
+    """Generates a new SCRU160 ID encoded in the base32hex format.
 
     Returns:
         32-character base32hexupper string (/^[0-9A-V]{32}$/).
@@ -95,7 +95,7 @@ def scru160() -> str:
 
 
 def scru160f() -> str:
-    """Generates a new SCRU-160 ID encoded in the hexadecimal format.
+    """Generates a new SCRU160 ID encoded in the hexadecimal format.
 
     Returns:
         40-character hexadecimal string (/^[0-9a-f]{40}$/).

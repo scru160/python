@@ -1,4 +1,4 @@
-"""Command-line interface to generate SCRU-160 identifiers"""
+"""Command-line interface to generate SCRU160 identifiers"""
 import argparse
 import datetime
 import re
@@ -8,7 +8,7 @@ from .. import scru160, scru160f, _base32hex160
 
 
 def generate() -> None:
-    parser = argparse.ArgumentParser(description="Generate SCRU-160 identifiers.")
+    parser = argparse.ArgumentParser(description="Generate SCRU160 identifiers.")
     parser.add_argument(
         "-f", action="store_true", help="print identifiers in hex encoding"
     )
@@ -28,7 +28,7 @@ def generate() -> None:
 
 def inspect() -> None:
     parser = argparse.ArgumentParser(
-        description="Show components of SCRU-160 identifiers read from stdin. "
+        description="Show components of SCRU160 identifiers read from stdin. "
         + "Print a human-readable JSON object for each valid line read."
     )
     parser.add_argument(

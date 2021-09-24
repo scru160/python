@@ -1,13 +1,13 @@
-# SCRU-160: Sortable, Clock and Random number-based Unique identifier
+# SCRU160: Sortable, Clock and Random number-based Unique identifier
 
-SCRU-160 ID is yet another attempt to supersede [UUID] in the use cases that
-need decentralized, globally unique time-ordered identifiers. SCRU-160 is
-inspired by [ULID] and [KSUID] and has the following features:
+SCRU160 ID is yet another attempt to supersede [UUID] in the use cases that need
+decentralized, globally unique time-ordered identifiers. SCRU160 is inspired by
+[ULID] and [KSUID] and has the following features:
 
-- 160-bit length
+- 160-bit feature-rich worry-free design suitable for general purposes
 - Sortable by generation time (in binary and in text)
-- Two case-insensitive encodings: 32-character base32hex and 40-character hex
-- More than 32,768 unique, time-ordered but unpredictable IDs per millisecond
+- Case-insensitive, highly portable encodings: 32-char base32hex and 40-char hex
+- More than 32,000 unique, time-ordered but unpredictable IDs per millisecond
 - Nearly 111-bit randomness for collision resistance
 
 ```python
@@ -20,13 +20,16 @@ print(scru160f())  # e.g. "017bf7eb48f41b7d6bd295bc5adc43436bc969df"
 print(scru160f())  # e.g. "017bf7eb48f41b7e1bc98aec348dfa1539b41288"
 ```
 
+See [the specification] for further details.
+
 [uuid]: https://en.wikipedia.org/wiki/Universally_unique_identifier
 [ulid]: https://github.com/ulid/spec
 [ksuid]: https://github.com/segmentio/ksuid
+[the specification]: https://github.com/scru160/spec
 
 ## Command-line interface
 
-`scru160` generates SCRU-160 IDs.
+`scru160` generates SCRU160 IDs.
 
 ```bash
 $ scru160
@@ -40,7 +43,7 @@ $ scru160 -n 4
 05U0G9TQQ8FOTV6SEJVMV6OJQDP15MHC
 ```
 
-`scru160-inspect` prints the components of given SCRU-160 IDs as human- and
+`scru160-inspect` prints the components of given SCRU160 IDs as human- and
 machine-readable JSON objects.
 
 ```bash
